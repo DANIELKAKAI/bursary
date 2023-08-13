@@ -31,13 +31,6 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
 
-    <!-- =======================================================
-  * Template Name: Multi
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/multi-responsive-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -63,9 +56,9 @@
     </header>
     <!-- End Header -->
 
-    <!-- ======= Contact Section ======= -->
+    <main id="main">
     <section id="contact" class="contact section-bg">
-        <div class="container" data-aos="fade-up">
+        <div class="container" >
             <div class="section-title">
                 <h2 class="text-center">Upload Documents</h2>
                 <p class="text-center">Upload Documents</p>
@@ -211,6 +204,19 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script>
+        const fileInputs = document.querySelectorAll('.form-control');
+
+        fileInputs.forEach(fileInput => {
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length > 0) {
+                    fileInput.classList.add('green-highlight');
+                } else {
+                    fileInput.classList.remove('green-highlight');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -1844,3 +1844,8 @@ section {
     margin: -20px 0 30px 0;
   }
 }
+
+.green-highlight {
+  border: 1px solid #28a745;
+  box-shadow: 0 0 5px #28a745;
+}

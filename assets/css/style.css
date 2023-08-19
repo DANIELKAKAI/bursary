@@ -1849,3 +1849,7 @@ section {
   border: 1px solid #28a745;
   box-shadow: 0 0 5px #28a745;
 }
+
+body{
+  background-color:#FFF5EE;
+}

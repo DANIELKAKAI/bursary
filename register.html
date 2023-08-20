@@ -47,7 +47,7 @@
   <main id="main">
     <section class="contact section-bg">
     </section>
-    <section id="contact" class="contact section-bg">
+    <section class="contact section-bg">
       <div class="container">
 
         <div class="row justify-content-center">
@@ -55,20 +55,21 @@
             <div class="section-title">
               <p class="text-center">Register</p>
             </div>
-            <form action="" method="post" role="form" class="php-email-form">
+            <form id="register-form" role="form" class="php-email-form">
               <div class="row">
                 <div class="form-group mt-3">
                   <input type="email" class="form-control" name="email" placeholder="Enter Your Email" required>
                 </div>
                 <div class="form-group mt-3">
-                  <input type="password" class="form-control" name="password" placeholder="Password" required>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="form-group mt-3">
-                  <input type="password" class="form-control" name="password" placeholder="Re-enter Password" required>
+                  <input type="password" class="form-control" id="password2" name="password2" placeholder="Re-enter Password" required>
+                  <p id="password-error" style="color: red;"></p>
                 </div>
 
                 <div class="text-center mt-3">
-                  <button type="submit">Register</button>
+                  <button onclick="register()" type="submit">Register</button>
                 </div>
                 <div class="text-center mt-3">
                   <a href="#">Already Have an Account, Click here to Log In</a>
@@ -90,10 +91,14 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+  <script src="assets/js/firebase.js"></script>
 
 </body>
 

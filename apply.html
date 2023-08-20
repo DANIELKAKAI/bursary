@@ -50,24 +50,24 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li>
-                      <a class="nav-link scrollto active" href="#hero">Home</a>
+                        <a class="nav-link scrollto active" href="#hero">Home</a>
                     </li>
                     <li>
-                      <a class="nav-link scrollto" href="">Apply For Bursery</a>
+                        <a class="nav-link scrollto" href="">Apply For Bursery</a>
                     </li>
                     <li>
-                      <a class="nav-link scrollto" href="#about">About Us</a>
+                        <a class="nav-link scrollto" href="#about">About Us</a>
                     </li>
                     <li>
-                      <a class="nav-link scrollto" href="#testimonials">Testimonials</a>
+                        <a class="nav-link scrollto" href="#testimonials">Testimonials</a>
                     </li>
                     <li>
-                      <a class="nav-link scrollto" href="#services">Key Achievements</a>
+                        <a class="nav-link scrollto" href="#services">Key Achievements</a>
                     </li>
                     <li>
-                      <a class="nav-link scrollto" href="#services">Logout</a>
+                        <a class="nav-link scrollto" href="#services">Logout</a>
                     </li>
-                  </ul>
+                </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
             <!-- .navbar -->
@@ -87,25 +87,26 @@
 
                 <div class="row justify-content-center">
                     <div class="col-md-8">
-                        <form action="" method="post" role="form" class="php-email-form">
+                        <form id="apply-form" role="form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">First Name:</label>
-                                    <input type="text" name="name" class="form-control" required>
+                                    <input type="hidden" id="uid" name="uid" value="" required>
+                                    <input type="text" name="first_name" class="form-control" required>
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Middle Name:</label>
-                                    <input type="text" name="name" class="form-control" required>
+                                    <input type="text" name="middle_name" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Last Name:</label>
-                                    <input type="text" name="name" class="form-control" required>
+                                    <input type="text" name="last_name" class="form-control" required>
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Date of Birth:</label>
-                                    <input type="date" name="name" class="form-control" required>
+                                    <input type="date" name="dob" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -115,13 +116,13 @@
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Email:</label>
-                                    <input type="email" name="email" class="form-control" required>
+                                    <input id="email" type="email" name="email" class="form-control" required disabled>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Gender:</label>
-                                    <select class="form-control" required>
+                                    <select name="gender" class="form-control" required>
                                         <option disabled selected></option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -129,7 +130,7 @@
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Citizenship:</label>
-                                    <select class="form-control" required>
+                                    <select name="citizenship" class="form-control" required>
                                         <option disabled selected></option>
                                         <option value="Kenyan">Kenyan</option>
                                         <option value="Other">Other</option>
@@ -139,7 +140,7 @@
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Institution:</label>
-                                    <select id="institution" class="form-control" required>
+                                    <select name="institution" id="institution" class="form-control" required>
                                         <option value="" disabled selected>Select Institution</option>
                                         <option value="university">University</option>
                                         <option value="college">College</option>
@@ -148,7 +149,8 @@
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Institution Name:</label>
-                                    <select id="institution-name" class="form-control" disabled required>
+                                    <select name="institution-name" id="institution-name" class="form-control" disabled
+                                        required>
                                         <option value="" disabled selected>Select Institution Name</option>
                                     </select>
                                 </div>
@@ -156,7 +158,7 @@
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Religion:</label>
-                                    <select class="form-control" required>
+                                    <select name="religion" class="form-control" required>
                                         <option disabled selected></option>
                                         <option value="Christian">Christian</option>
                                         <option value="Muslim">Muslim</option>
@@ -167,7 +169,7 @@
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Parental Status:</label>
-                                    <select class="form-control" required>
+                                    <select name="parental-status" class="form-control" required>
                                         <option disabled selected></option>
                                         <option value="Both Parents Alive">Both Parents Alive</option>
                                         <option value="Total Orphan">Total Orphan</option>
@@ -180,17 +182,17 @@
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Birth Certificate Number:</label>
-                                    <input type="text" name="birth-certificate" class="form-control" required>
+                                    <input name="birth-certificate-number" type="text" class="form-control" required>
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Birth Town:</label>
-                                    <input type="text" name="birth-town" class="form-control" required>
+                                    <input name="birth-town" type="text" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">County:</label>
-                                    <select class="form-control" id="counties" required disabled>
+                                    <select name="county" class="form-control" id="counties" required disabled>
                                         <option value="Garissa" selected>Garissa</option>
                                         <option value="Baringo">Baringo</option>
                                         <option value="Bomet">Bomet</option>
@@ -243,7 +245,7 @@
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Sub County:</label>
-                                    <select class="form-control" id="subcounties" required>
+                                    <select name="sub-county" class="form-control" id="subcounties" required>
                                         <option value="" disabled selected></option>
                                         <option value="Bodhai">Bodhai</option>
                                         <option value="Hulugho">Hulugho</option>
@@ -253,11 +255,12 @@
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Constituency:</label>
-                                    <input type="text" name="residence" class="form-control" value="Ijara" required disabled>
+                                    <input name="constituency" type="text" name="residence" class="form-control"
+                                        value="Ijara" required disabled>
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Ward:</label>
-                                    <select class="form-control" id="wards" required>
+                                    <select name="ward" class="form-control" id="wards" required>
                                         <option value="" disabled selected></option>
                                         <option value="Ijara">Ijara</option>
                                         <option value="Masalani">Masalani</option>
@@ -268,18 +271,18 @@
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Voters Card Number:</label>
-                                    <input type="text" name="voter-card" class="form-control" required>
+                                    <input name="voter-card-number" type="text" name="voter-card" class="form-control">
                                 </div>
                                 <div class="col-md-6 form-group my-2">
-                                    <label class="fw-bold text-dark">ID card Number:</label>
-                                    <input type="text" name="id-card" class="form-control" required>
+                                    <label class="fw-bold text-dark">National ID card Number:</label>
+                                    <input name="id-card-number" type="text" name="id-card" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Special Need:</label>
-                                    <select class="form-control" id="special-need" required>
-                                        <option value="" disabled selected></option>
+                                    <select name="special-need" class="form-control" id="special-need">
+                                        <option value="" selected>None</option>
                                         <option value="Hearing">Hearing</option>
                                         <option value="Deaf">Deaf</option>
                                         <option value="Dumb">Dumb</option>
@@ -290,7 +293,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-md form-group my-2">
                                     <div class="text-center">
-                                        <button type="submit">Next</button>
+                                        <button onclick="submitDetails()" type="submit">Next</button>
                                     </div>
                                 </div>
                             </div>
@@ -343,10 +346,20 @@
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <!-- FireBase -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="assets/js/firebase.js"></script>
+    <script>
+      checkAuth("student");
+    </script>
+
     <script>
         const countySelect = document.getElementById("counties");
         const subcountySelect = document.getElementById("subcounties");

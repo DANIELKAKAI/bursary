@@ -59,22 +59,30 @@
         <nav id="navbar" class="navbar">
           <ul>
             <li>
-              <a class="nav-link scrollto active" href="#hero">Home</a>
+              <a class="nav-link scrollto active" href="home.html">Home</a>
             </li>
             <li>
-              <a class="nav-link scrollto" href="">Apply For Bursery</a>
+              <a class="nav-link scrollto" href="applications.html"
+                >Apply For Bursery</a
+              >
             </li>
             <li>
-              <a class="nav-link scrollto" href="#about">About Us</a>
+              <a class="nav-link scrollto" href="home.html#about">About Us</a>
             </li>
             <li>
-              <a class="nav-link scrollto" href="#testimonials">Testimonials</a>
+              <a class="nav-link scrollto" href="home.html#testimonials"
+                >Testimonials</a
+              >
             </li>
             <li>
-              <a class="nav-link scrollto" href="#services">Key Achievements</a>
+              <a class="nav-link scrollto" href="achievements.html"
+                >Key Achievements</a
+              >
             </li>
             <li>
-              <a class="nav-link scrollto" href="#services">Logout</a>
+              <button class="nav-link scrollto" onclick="logOut()">
+                Logout
+              </button>
             </li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -197,7 +205,7 @@
                   aliquip ex ea commodo consequat
                 </li>
               </ul>
-              <a href="" class="cta-btn">Read More</a>
+              <a href="achievements.html" class="cta-btn">Read More</a>
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0 text-center">
               <h3>Our Honourable MP</h3>
@@ -226,7 +234,7 @@
               education-related costs, including tuition fees, uniforms, and
               stationery.
             </p>
-            <a class="cta-btn" href="#">Click To Apply</a>
+            <a class="cta-btn" href="applications.html">Click To Apply</a>
           </div>
         </div>
       </section>
@@ -481,9 +489,13 @@
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="assets/js/firebase.js"></script>
   </body>
 </html>

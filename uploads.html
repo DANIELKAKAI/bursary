@@ -67,35 +67,35 @@
 
                 <div class="row justify-content-center">
                     <div class="col-md-8">
-                        <form action="" method="post" role="form" class="php-email-form">
+                        <form id="apply-form" role="form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Passport Photo:</label>
-                                    <input type="file" id="" name="passport" accept="image/*,.pdf" class="form-control"
+                                    <input type="file" id="passport" name="passport" accept="image/*,.pdf" class="form-control"
                                         required>
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Birth certificate:</label>
-                                    <input type="file" id="" name="birth" accept="image/*,.pdf" class="form-control"
+                                    <input type="file" id="birth-certificate" name="birth-certificate" accept="image/*,.pdf" class="form-control"
                                         required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Latest Fee Structure:</label>
-                                    <input type="file" id="" name="fee" accept="image/*,.pdf" class="form-control"
+                                    <input type="file" id="fee-structure" name="fee-structure" accept="image/*,.pdf" class="form-control"
                                         required>
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Last Semester Transcript:</label>
-                                    <input type="file" id="" name="result" accept="image/*,.pdf" class="form-control"
+                                    <input type="file" id="transcript" name="transcript" accept="image/*,.pdf" class="form-control"
                                         required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Admission Letter:</label>
-                                    <input type="file" id="" name="id" accept="image/*,.pdf" class="form-control"
+                                    <input type="file" id="admission-letter" name="admission-letter" accept="image/*,.pdf" class="form-control"
                                         required>
                                 </div>
 
@@ -103,12 +103,12 @@
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Student ID:</label>
-                                    <input type="file" id="" name="id" accept="image/*,.pdf" class="form-control"
+                                    <input type="file" id="student-id" name="studnt-id" accept="image/*,.pdf" class="form-control"
                                         required>
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">National ID:</label>
-                                    <input type="file" id="" name="id" accept="image/*,.pdf" class="form-control"
+                                    <input type="file" id="national-id" name="national-id" accept="image/*,.pdf" class="form-control"
                                         required>
                                 </div>
 
@@ -117,13 +117,13 @@
 
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Parent copy of Identity card:</label>
-                                    <input type="file" id="" name="id" accept="image/*,.pdf" class="form-control"
+                                    <input type="file" id="parent-id" name="parent-id" accept="image/*,.pdf" class="form-control"
                                         required>
                                 </div>
                                 <div class="col-md-6 form-group my-2">
                                     <label class="fw-bold text-dark">Parent(s) Death Certificates ( If Orphan ):</label>
-                                    <input type="file" id="" name="parent-death-cert" accept="image/*,.pdf"
-                                        class="form-control" required>
+                                    <input type="file" id="parent-death-cert" name="parent-death-cert" accept="image/*,.pdf"
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -187,18 +187,16 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-    <script>
-        const fileInputs = document.querySelectorAll('.form-control');
 
-        fileInputs.forEach(fileInput => {
-            fileInput.addEventListener('change', () => {
-                if (fileInput.files.length > 0) {
-                    fileInput.classList.add('green-highlight');
-                } else {
-                    fileInput.classList.remove('green-highlight');
-                }
-            });
-        });
+    <!-- FireBase -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+    <script src="assets/js/firebase.js"></script>
+    <script>
+      checkAuth("student");
+      submitUploads();
     </script>
 </body>
 

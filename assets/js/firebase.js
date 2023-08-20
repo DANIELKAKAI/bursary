@@ -10,6 +10,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+let uid = "";
+
 function register() {
     const registerForm = document.getElementById('register-form');
     registerForm.addEventListener('submit', async (e) => {
@@ -65,6 +67,7 @@ function logIn() {
 
 function logOut() {
     firebase.auth().signOut().then(() => {
+        uid = "";
         location.href = "home.html";
     }).catch((error) => {
         console.log(error);
@@ -76,6 +79,7 @@ function checkAuth(role) {
         if (!user) {
             location.href = `login.html?next=${window.location.pathname}`;
         }
+        uid = user.uid;
         autoFillUser(user);
         firebase.firestore().collection("users").doc(user.uid).get().then((doc) => {
             if (doc.exists) {
@@ -98,19 +102,18 @@ function submitDetails() {
 
         const uid = document.getElementById('uid').value;
 
-        const inputValues = { date: currentDate() };
+        const inputValues = { date: currentDate(), status: "Not Reviewed" };
 
         inputElements.forEach((input) => {
             inputValues[input.name] = input.value;
         });
 
-        //console.log({ date: currentDate(), ...inputNames });
-
         firebase.firestore().collection("student-details").doc(uid).set(
             inputValues
-        )
+        ).then(() => {
+            location.href = "uploads.html"
+        })
     })
-
 }
 
 function autoFillUser(user) {
@@ -131,11 +134,118 @@ function autoFillUser(user) {
 
 }
 
+
+// file uploads
+function submitUploads() {
+    upLoadFiles();
+
+    const applyForm = document.getElementById('apply-form');
+
+    applyForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const requiredInputs = applyForm.querySelectorAll('input[required]');
+
+        let valid = true;
+
+        requiredInputs.forEach(input => {
+            if (!input.classList.contains('green-highlight')) {
+                valid = false;
+                alert("Select All the required Files");
+                return;
+            }
+        });
+        if (valid) {
+            location.href = "applications.html";
+        }
+    });
+}
+
+function upLoadFiles() {
+    const fileInputs = document.querySelectorAll('.form-control');
+
+    fileInputs.forEach(fileInput => {
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                upLoadFile(fileInput);
+            } else {
+                fileInput.classList.remove('green-highlight');
+            }
+        });
+    });
+}
+
+function upLoadFile(fileInput) {
+    for (var i = 0; i < fileInput.files.length; i++) {
+        const file = fileInput.files[i];
+        const fileName = fileInput.name + getFileExtension(file.name);
+        const filePath = `users/students/${uid}/${fileName}`;
+        console.log(filePath);
+
+        firebase.storage().ref(filePath).put(file).then(
+            (snapshot) => {
+                fileInput.blur();
+                fileInput.classList.add('green-highlight');
+            }
+        ).catch((error) => {
+            console.log(error);
+        });
+    }
+}
+
+// applications
+
+function fetchApplications() {
+    let tableBody = document.getElementById("applications");
+    let name = document.getElementById("fullName");
+    let content = "";
+    firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+            location.href = `login.html?next=${window.location.pathname}`;
+        }
+        firebase.firestore().collection("student-details").where('uid', '==', user.uid).get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                name.innerHTML = doc.data().first_name + " " + doc.data().middle_name + " " + doc.data().last_name;
+
+                content += `<tr>
+                        <th scope="row">4535TR</th>
+                        <td>${doc.data().date}</td>
+                        <td>
+                          ${getStatusIcon(doc.data().status)}
+                        </td >
+                        <td>
+                        <a href="apply.html?${uid}">Edit</a>
+                        </td>
+                      </tr > `;
+            });
+            tableBody.innerHTML = content;
+        });
+    })
+}
+
+
+// utils
 function currentDate() {
     const currentDate = new Date();
 
     const day = String(currentDate.getDate()).padStart(2, '0');
     const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are zero-based
     const year = currentDate.getFullYear();
-    return `${day}-${month}-${year}`;
+    return `${day} - ${month} - ${year}`;
 }
+
+function getFileExtension(filename) {
+    return filename.slice((filename.lastIndexOf(".") - 2 >>> 0) + 2);
+}
+
+function getStatusIcon(status) {
+    if (status == "Not Seen") {
+        return '<i class="bi bi-hourglass-top text-primary"></i> Not Seen'
+    }
+    if (status == "Approved") {
+        return '<i class="bi bi-check-circle-fill text-success"></i> Approved'
+    }
+    if (status == "Rejected") {
+        return '<i class="bi bi-exclamation-circle-fill text-danger"></i> Rejected'
+    }
+};

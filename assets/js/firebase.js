@@ -372,12 +372,15 @@ function getFileExtension(filename) {
 
 function getStatusIcon(status) {
     if (status == "Not Seen") {
-        return '<i class="bi bi-hourglass-top text-primary"></i> Not Seen'
+        return '<i class="bi bi-hourglass-top text-secondary"></i> Not Seen'
     }
     if (status == "Approved") {
         return '<i class="bi bi-check-circle-fill text-success"></i> Approved'
     }
     if (status == "Rejected") {
         return '<i class="bi bi-exclamation-circle-fill text-danger"></i> Rejected'
+    }
+    if (status == "Seen") {
+        return '<i class="bi bi-eye text-primary"></i> Seen'
     }
 };

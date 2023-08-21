@@ -108,16 +108,29 @@
             </div>
             <div class="col-md-4">
               <div class="row">
-                <div class="col-12 mb-2">
-                  <button class="btn btn-primary btn-block">
+                <div class="col-12 my-2">
+                  <button
+                    onclick="changeStatus(this,'Seen')"
+                    class="btn btn-primary status-btn"
+                  >
                     Mark as Seen
                   </button>
                 </div>
                 <div class="col-12 mb-2">
-                  <button class="btn btn-success btn-block">Approve</button>
+                  <button
+                    onclick="changeStatus(this,'Approved')"
+                    class="btn btn-success status-btn"
+                  >
+                    Approve
+                  </button>
                 </div>
                 <div class="col-12 mb-2">
-                  <button class="btn btn-danger btn-block">Reject</button>
+                  <button
+                    onclick="changeStatus(this,'Reject')"
+                    class="btn btn-danger status-btn"
+                  >
+                    Reject
+                  </button>
                 </div>
               </div>
             </div>
@@ -222,7 +235,10 @@
               </button>
             </div>
             <div class="col-md-4">
-              <button class="btn btn-secondary mb-2">
+              <button
+                onclick="downLoadStudentFiles()"
+                class="btn btn-secondary mb-2"
+              >
                 <i class="bi bi-cloud-download"></i> Download Documents
               </button>
             </div>

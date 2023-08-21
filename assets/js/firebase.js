@@ -102,7 +102,7 @@ function submitDetails() {
 
         const uid = document.getElementById('uid').value;
 
-        const inputValues = { date: currentDate(), status: "Not Reviewed" };
+        const inputValues = { date: currentDate(), status: "Not Seen" };
 
         inputElements.forEach((input) => {
             inputValues[input.name] = input.value;
@@ -253,6 +253,7 @@ function fetchAllApplications() {
     })
 }
 
+// student page
 function fetchStudent() {
     const queryParams = new URLSearchParams(window.location.search);
     const uid = queryParams.get('uid');
@@ -282,6 +283,38 @@ function searchFileByName(fileName, uid) {
         });
 }
 
+function downLoadStudentFiles() {
+    const queryParams = new URLSearchParams(window.location.search);
+    const uid = queryParams.get('uid');
+
+    firebase.storage().ref(`users/students/${uid}/`).listAll()
+        .then((res) => {
+            res.items.forEach((file) => {
+                file.getDownloadURL().then(url => {
+                    var link = document.createElement('a');
+                    link.href = url;
+                    link.target = "_blank"
+                    link.download = file.name;
+                    link.click();
+                });
+            })
+        });
+}
+
+function changeStatus(button, status) {
+    const queryParams = new URLSearchParams(window.location.search);
+    const uid = queryParams.get('uid');
+    firebase.firestore().collection("student-details").doc(uid).update(
+        { status: status }
+    ).then(() => {
+        let buttons = document.getElementsByClassName("status-btn");
+        Array.from(buttons).forEach((btn) => {
+            btn.disabled = false;
+        });
+        button.disabled = true;
+    })
+}
+
 
 // utils
 function currentDate() {
@@ -290,7 +323,7 @@ function currentDate() {
     const day = String(currentDate.getDate()).padStart(2, '0');
     const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are zero-based
     const year = currentDate.getFullYear();
-    return `${day} - ${month} - ${year}`;
+    return `${day}-${month}-${year}`;
 }
 
 function getFileExtension(filename) {

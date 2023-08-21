@@ -238,7 +238,7 @@ function fetchAllApplications() {
                         <td>APP73828</td>
                         <td>${doc.data()['id-card-number']}</td>
                         <td>${doc.data()['birth-certificate-number']}</td>
-                        <td>${fullName}</td>
+                        <td class="text-capitalize">${fullName}</td>
                         <td>${doc.data().date}</td>
                         <td>
                           ${getStatusIcon(doc.data().status)}
@@ -250,7 +250,47 @@ function fetchAllApplications() {
             });
             tableBody.innerHTML = content;
         });
-    })
+    });
+
+    let search = document.getElementById("search");
+    search.addEventListener("input", (event) => {
+        let value = event.target.value;
+        searchStudents(value);
+    });
+}
+
+function searchStudents(searchTerm) {
+    let tableBody = document.getElementById("applications");
+    let content = "";
+
+    firebase.firestore().collection("student-details")
+        .orderBy("first_name")
+        .startAt(searchTerm)
+        .endAt(searchTerm + "\uf8ff")
+        .get()
+        .then((querySnapshot) => {
+            tableBody.innerHTML = "";
+            querySnapshot.forEach((doc) => {
+                const fullName = doc.data().first_name + " " + doc.data().middle_name + " " + doc.data().last_name;
+                content += `<tr>
+                        <td>APP73828</td>
+                        <td>${doc.data()['id-card-number']}</td>
+                        <td>${doc.data()['birth-certificate-number']}</td>
+                        <td class="text-capitalize">${fullName}</td>
+                        <td>${doc.data().date}</td>
+                        <td>
+                          ${getStatusIcon(doc.data().status)}
+                        </td>
+                        <td>
+                        <a href="student.html?uid=${doc.data().uid}">View Profile</a>
+                        </td>
+                      </tr> `;
+            });
+            tableBody.innerHTML = content;
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
 }
 
 // student page

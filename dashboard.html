@@ -53,7 +53,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
       <div class="container d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo">
+        <a href="home.html" class="logo">
           <img src="assets/img/cdf-logo.png" alt="" class="img-fluid" />IJARA
         </a>
         <nav id="navbar" class="navbar">
@@ -74,7 +74,9 @@
               <a class="nav-link scrollto" href="#services">Key Achievements</a>
             </li>
             <li>
-              <a class="nav-link scrollto" href="#services">Logout</a>
+              <a onclick="logOut()" class="nav-link scrollto" href="#"
+                >Logout</a
+              >
             </li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -97,31 +99,30 @@
           </div>
           <div class="row mb-2">
             <div class="col-md-12 d-flex justify-content-start">
-              <input class="form-input" type="text" placeholder="Search" />
+              <input
+                id="search"
+                class="form-input"
+                type="text"
+                placeholder="Search"
+              />
             </div>
             <div class="col-md-12 d-flex justify-content-end">
               <div class="dropdown">
-                <button
+                Filter:<button
                   class="btn btn-secondary dropdown-toggle"
                   type="button"
+                  id="dropdownMenuButton"
                   data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
-                  Status <span class="caret"></span>
+                  Status
                 </button>
-                <ul class="dropdown-menu">
-                  <input
-                    class="form-control"
-                    id="myInput"
-                    type="text"
-                    placeholder="Search.."
-                  />
-                  <li><a href="#">HTML</a></li>
-                  <li><a href="#">CSS</a></li>
-                  <li><a href="#">JavaScript</a></li>
-                  <li><a href="#">jQuery</a></li>
-                  <li><a href="#">Bootstrap</a></li>
-                  <li><a href="#">Angular</a></li>
-                </ul>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
               </div>
             </div>
           </div>
@@ -154,19 +155,60 @@
       <div class="footer-top">
         <div class="container">
           <div class="row">
-            <div class="col-lg-2 col-md-6 footer-links">
+            <div class="col-md-3 footer-links">
               <h4>Useful Links</h4>
               <ul>
                 <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#">Home</a>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="home.html">Home</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i>
-                  <a href="#">Apply For Bursery</a>
+                  <a href="applications.html">Apply For Bursery</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i>
-                  <a href="#">Key Achievements</a>
+                  <a href="achievements.html">Key Achievements</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3 footer-links">
+              <h4>Social Media</h4>
+              <ul>
+                <li><i class="bi bi-twitter"></i> <a href="#"> Twitter</a></li>
+                <li>
+                  <i class="bi bi-facebook"></i>
+                  <a href="#">Facebook</a>
+                </li>
+                <li>
+                  <i class="bi bi-youtube"></i>
+                  <a href="#">YouTube</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3 footer-links">
+              <h4>Our Location</h4>
+              <ul>
+                <li>Ijara</li>
+                <li>Masalani, Torabora</li>
+                <li>Opposite ,Masalani Police Station</li>
+                <li>+254723415171</li>
+              </ul>
+            </div>
+            <div class="col-md-3 footer-links">
+              <h4>Key Achievements</h4>
+              <ul>
+                <li>
+                  <i class="bi bi-trophy"></i>
+                  <a href="achievements.html">Education</a>
+                </li>
+                <li>
+                  <i class="bi bi-trophy"></i>
+                  <a href="achievements.html">Infrastructure</a>
+                </li>
+                <li>
+                  <i class="bi bi-trophy"></i>
+                  <a href="achievements.html">Security</a>
                 </li>
               </ul>
             </div>

@@ -53,13 +53,13 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
       <div class="container d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo">
+        <a href="home.html" class="logo">
           <img src="assets/img/cdf-logo.png" alt="" class="img-fluid" />IJARA
         </a>
         <nav id="navbar" class="navbar">
           <ul>
             <li>
-              <a class="nav-link scrollto active" href="#hero">Home</a>
+              <a class="nav-link scrollto active" href="home.html">Home</a>
             </li>
             <li>
               <a class="nav-link scrollto" href="">Apply For Bursery</a>
@@ -74,7 +74,9 @@
               <a class="nav-link scrollto" href="#services">Key Achievements</a>
             </li>
             <li>
-              <a class="nav-link scrollto" href="#services">Logout</a>
+              <a href="#" class="nav-link scrollto" onclick="logOut()">
+                Logout
+              </a>
             </li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -126,7 +128,7 @@
                 </div>
                 <div class="col-12 mb-2">
                   <button
-                    onclick="changeStatus(this,'Reject')"
+                    onclick="changeStatus(this,'Rejected')"
                     class="btn btn-danger status-btn"
                   >
                     Reject
@@ -253,19 +255,60 @@
       <div class="footer-top">
         <div class="container">
           <div class="row">
-            <div class="col-lg-2 col-md-6 footer-links">
+            <div class="col-md-3 footer-links">
               <h4>Useful Links</h4>
               <ul>
                 <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#">Home</a>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="home.html">Home</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i>
-                  <a href="#">Apply For Bursery</a>
+                  <a href="applications.html">Apply For Bursery</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i>
-                  <a href="#">Key Achievements</a>
+                  <a href="achievements.html">Key Achievements</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3 footer-links">
+              <h4>Social Media</h4>
+              <ul>
+                <li><i class="bi bi-twitter"></i> <a href="#"> Twitter</a></li>
+                <li>
+                  <i class="bi bi-facebook"></i>
+                  <a href="#">Facebook</a>
+                </li>
+                <li>
+                  <i class="bi bi-youtube"></i>
+                  <a href="#">YouTube</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3 footer-links">
+              <h4>Our Location</h4>
+              <ul>
+                <li>Ijara</li>
+                <li>Masalani, Torabora</li>
+                <li>Opposite ,Masalani Police Station</li>
+                <li>+254723415171</li>
+              </ul>
+            </div>
+            <div class="col-md-3 footer-links">
+              <h4>Key Achievements</h4>
+              <ul>
+                <li>
+                  <i class="bi bi-trophy"></i>
+                  <a href="achievements.html">Education</a>
+                </li>
+                <li>
+                  <i class="bi bi-trophy"></i>
+                  <a href="achievements.html">Infrastructure</a>
+                </li>
+                <li>
+                  <i class="bi bi-trophy"></i>
+                  <a href="achievements.html">Security</a>
                 </li>
               </ul>
             </div>

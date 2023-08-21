@@ -44,7 +44,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo">
+            <a href="home.html" class="logo">
                 <img src="assets/img/cdf-logo.png" alt="" class="img-fluid">IJARA
             </a>
             <nav id="navbar" class="navbar">
@@ -65,7 +65,9 @@
                         <a class="nav-link scrollto" href="#services">Key Achievements</a>
                     </li>
                     <li>
-                        <a class="nav-link scrollto" href="#services">Logout</a>
+                        <a href="#" class="nav-link scrollto" onclick="logOut()">
+                Logout
+              </a>
                     </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -128,14 +130,7 @@
                                         <option value="Female">Female</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6 form-group my-2">
-                                    <label class="fw-bold text-dark">Citizenship:</label>
-                                    <select name="citizenship" class="form-control" required>
-                                        <option disabled selected></option>
-                                        <option value="Kenyan">Kenyan</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
+                
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group my-2">
@@ -175,7 +170,6 @@
                                         <option value="Total Orphan">Total Orphan</option>
                                         <option value="Single Mother">Single Mother</option>
                                         <option value="Single Father">Single Father</option>
-                                        <option value="Unknown">Unknown</option>
                                     </select>
                                 </div>
                             </div>
@@ -247,6 +241,7 @@
                                     <label class="fw-bold text-dark">Sub County:</label>
                                     <select name="sub-county" class="form-control" id="subcounties" required>
                                         <option value="" disabled selected></option>
+                                        <option value="Hulugho">Ijara</option>
                                         <option value="Bodhai">Bodhai</option>
                                         <option value="Hulugho">Hulugho</option>
                                     </select>
@@ -287,6 +282,7 @@
                                         <option value="Deaf">Deaf</option>
                                         <option value="Dumb">Dumb</option>
                                         <option value="Blind">Blind</option>
+                                        <option value="Blind">Crippled</option>
                                     </select>
                                 </div>
                             </div>
@@ -309,35 +305,77 @@
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
-                        <ul>
-                            <li>
-                                <i class="bx bx-chevron-right"></i> <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <i class="bx bx-chevron-right"></i>
-                                <a href="#">Apply For Bursery</a>
-                            </li>
-                            <li>
-                                <i class="bx bx-chevron-right"></i>
-                                <a href="#">Key Achievements</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3 footer-links">
+                <h4>Useful Links</h4>
+                <ul>
+                  <li>
+                    <i class="bx bx-chevron-right"></i>
+                    <a href="home.html">Home</a>
+                  </li>
+                  <li>
+                    <i class="bx bx-chevron-right"></i>
+                    <a href="applications.html">Apply For Bursery</a>
+                  </li>
+                  <li>
+                    <i class="bx bx-chevron-right"></i>
+                    <a href="achievements.html">Key Achievements</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3 footer-links">
+                <h4>Social Media</h4>
+                <ul>
+                  <li><i class="bi bi-twitter"></i> <a href="#"> Twitter</a></li>
+                  <li>
+                    <i class="bi bi-facebook"></i>
+                    <a href="#">Facebook</a>
+                  </li>
+                  <li>
+                    <i class="bi bi-youtube"></i>
+                    <a href="#">YouTube</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3 footer-links">
+                <h4>Our Location</h4>
+                <ul>
+                  <li>Ijara</li>
+                  <li>Masalani, Torabora</li>
+                  <li>Opposite ,Masalani Police Station</li>
+                  <li>+254723415171</li>
+                </ul>
+              </div>
+              <div class="col-md-3 footer-links">
+                <h4>Key Achievements</h4>
+                <ul>
+                  <li>
+                    <i class="bi bi-trophy"></i>
+                    <a href="achievements.html">Education</a>
+                  </li>
+                  <li>
+                    <i class="bi bi-trophy"></i>
+                    <a href="achievements.html">Infrastructure</a>
+                  </li>
+                  <li>
+                    <i class="bi bi-trophy"></i>
+                    <a href="achievements.html">Security</a>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
-
+  
         <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong><span>Multi</span></strong>. All Rights Reserved
-            </div>
+          <div class="copyright">
+            &copy; Copyright <strong><span>Multi</span></strong
+            >. All Rights Reserved
+          </div>
         </div>
-    </footer>
-    <!-- End Footer -->
+      </footer>
+      <!-- End Footer -->
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

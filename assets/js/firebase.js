@@ -98,7 +98,7 @@ function submitDetails() {
     applyForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const inputElements = applyForm.querySelectorAll("input");
+        const inputElements = applyForm.querySelectorAll("input, select");
 
         const uid = document.getElementById('uid').value;
 
@@ -221,6 +221,66 @@ function fetchApplications() {
             tableBody.innerHTML = content;
         });
     })
+}
+
+function fetchAllApplications() {
+    let tableBody = document.getElementById("applications");
+    let content = "";
+    firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+            location.href = `login.html?next=${window.location.pathname}`;
+        }
+        firebase.firestore().collection("student-details").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const fullName = doc.data().first_name + " " + doc.data().middle_name + " " + doc.data().last_name;
+
+                content += `<tr>
+                        <td>APP73828</td>
+                        <td>${doc.data()['id-card-number']}</td>
+                        <td>${doc.data()['birth-certificate-number']}</td>
+                        <td>${fullName}</td>
+                        <td>${doc.data().date}</td>
+                        <td>
+                          ${getStatusIcon(doc.data().status)}
+                        </td>
+                        <td>
+                        <a href="student.html?uid=${doc.data().uid}">View Profile</a>
+                        </td>
+                      </tr> `;
+            });
+            tableBody.innerHTML = content;
+        });
+    })
+}
+
+function fetchStudent() {
+    const queryParams = new URLSearchParams(window.location.search);
+    const uid = queryParams.get('uid');
+    const img = document.getElementById('passport');
+
+    searchFileByName('passport', uid).then((file) => {
+        file.getDownloadURL().then(url => img.src = url);
+    });
+
+    firebase.firestore().collection("student-details").where('uid', '==', uid).get().then((querySnapshot) => {
+        console.log(querySnapshot);
+        querySnapshot.forEach((doc) => {
+            for (const key in doc.data()) {
+                let td = document.getElementById(key);
+                if (td) {
+                    td.innerHTML = doc.data()[key];
+                }
+            }
+        });
+    });
+}
+
+function searchFileByName(fileName, uid) {
+    return firebase.storage().ref(`users/students/${uid}/`).listAll()
+        .then((res) => {
+            const file = res.items.find(item => item.name.includes(fileName));
+            return file || null;
+        });
 }
 
 

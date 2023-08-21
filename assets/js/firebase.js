@@ -263,7 +263,6 @@ function fetchStudent() {
     });
 
     firebase.firestore().collection("student-details").where('uid', '==', uid).get().then((querySnapshot) => {
-        console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
             for (const key in doc.data()) {
                 let td = document.getElementById(key);

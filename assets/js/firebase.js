@@ -55,8 +55,9 @@ function logIn() {
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     passwordError.textContent = "";
-                    const queryParams = new URLSearchParams(window.location.search);
-                    location.href = queryParams.get("next") ? queryParams.get("next") : "home.html";
+                    //const queryParams = new URLSearchParams(window.location.search);
+                    //location.href = queryParams.get("next") ? queryParams.get("next") : "home.html";
+                    location.href = "applications.html";
                 })
                 .catch((error) => {
                     passwordError.textContent = `${error.message}`;

@@ -168,7 +168,7 @@ function upLoadFiles() {
     fileInputs.forEach(fileInput => {
         fileInput.addEventListener('change', () => {
             if (fileInput.files.length > 0) {
-                upLoadFile(fileInput);
+                upLoadFile2(fileInput);
             } else {
                 fileInput.classList.remove('green-highlight');
             }
@@ -191,6 +191,31 @@ function upLoadFile(fileInput) {
         ).catch((error) => {
             console.log(error);
         });
+    }
+}
+
+function upLoadFile2(fileInput) {
+    for (var i = 0; i < fileInput.files.length; i++) {
+        const file = fileInput.files[i];
+        const fileName = fileInput.name + getFileExtension(file.name);
+        const filePath = `users/students/${uid}/${fileName}`;
+
+        let status = document.createElement('p');
+        status.textContent = 'uploading';
+
+        firebase.storage().ref(filePath).put(file).on('state_changed', (snapshot) => {
+            fileInput.insertAdjacentElement('afterend', status).classList.add('text-success');
+            let progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            status.textContent = `uploading ${progress} %`;
+        },
+            (error) => {
+                console.log(error);
+            },
+            () => {
+                fileInput.blur();
+                status.style.display = "none";
+                fileInput.classList.add('green-highlight');
+            });
     }
 }
 
